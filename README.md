@@ -67,6 +67,14 @@ uv run pyright
 uv run pytest
 ```
 
+## Publishing
+
+```sh
+rm -rf dist
+uv build
+uv publish --username __token__
+```
+
 ## Tasks
 
 - [ ] Extend to [Barnes-Hut-SNE](https://arxiv.org/abs/1301.3342)
