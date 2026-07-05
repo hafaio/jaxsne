@@ -1,8 +1,8 @@
 # jaxsne
 
-[![build](https://github.com/erikbrinkman/jaxsne/actions/workflows/python-package.yml/badge.svg)](https://github.com/erikbrinkman/jaxsne/actions/workflows/python-package.yml)
+[![build](https://github.com/hafaio/jaxsne/actions/workflows/build.yml/badge.svg)](https://github.com/hafaio/jaxsne/actions/workflows/build.yml)
 [![pypi](https://img.shields.io/pypi/v/jaxsne)](https://pypi.org/project/jaxsne/)
-[![docs](https://img.shields.io/badge/api-docs-blue)](https://erikbrinkman.github.io/jaxsne)
+[![docs](https://img.shields.io/badge/api-docs-blue)](https://hafaio.github.io/jaxsne)
 
 A library for doing dimensionality reduction in different metric spaces, or
 using different distributions.
@@ -69,11 +69,8 @@ uv run pytest
 
 ## Publishing
 
-```sh
-rm -rf dist
-uv build
-uv publish --username __token__
-```
+Releases are cut by manually dispatching the `release` workflow, which gates on
+CI, builds, and publishes to PyPI via trusted publishing.
 
 ## Tasks
 
