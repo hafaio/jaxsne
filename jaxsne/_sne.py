@@ -145,6 +145,13 @@ def sne(  # noqa: PLR0913
     alternate metric spaces or distributions.
     """
     num, _ = data.shape
+    if perplexity > num - 1:
+        raise ValueError(
+            f"perplexity ({perplexity}) must be at most the number of points "
+            f"minus one ({num - 1}); the entropy proxy is bounded below by "
+            "-log(num - 1), so a larger perplexity has an unreachable target "
+            "and produces all-NaN probabilities"
+        )
     if out_scale is None:
         out_scale = num / perplexity
 
