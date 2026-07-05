@@ -22,10 +22,11 @@ def init(data: Array, n_components: int, key: Array) -> Array:
     """Initialize reduced dimensional data.
 
     If there are enough points, PCA is used, otherwise this falls back to random
-    projection.
+    projection. PCA can produce at most `dim` components, so requesting more also
+    falls back to random projection.
     """
     num, dim = data.shape
-    if num < dim:
+    if num < dim or n_components > dim:
         return rproj(data, n_components, key)
     else:
         return pca(data, n_components)
