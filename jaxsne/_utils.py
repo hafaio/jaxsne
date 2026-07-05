@@ -13,9 +13,9 @@ def pca(data: Array, n_components: int) -> Array:
     """Perform Principle Component Analysis."""
     normed = data - jnp.mean(data, 0)
     normed = normed / (normed.std(0) + 1e-6)
-    vals, vecs = jnp.linalg.eig(normed.T @ normed)
-    inds = jnp.argpartition(-vals.real, n_components)[:n_components]
-    return normed @ vecs.real[:, inds]
+    _, vecs = jnp.linalg.eigh(normed.T @ normed)
+    # eigh sorts ascending, so the top components are the last columns
+    return normed @ vecs[:, -n_components:]
 
 
 def init(data: Array, n_components: int, key: Array) -> Array:
