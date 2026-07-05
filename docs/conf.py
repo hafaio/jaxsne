@@ -1,10 +1,9 @@
 """Sphinx conf."""
 
 import sys
+import tomllib
 from datetime import date
 from os import path
-
-import tomllib
 
 sys.path.append(path.abspath(".."))
 
