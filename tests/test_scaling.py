@@ -1,11 +1,21 @@
 """Tests for scaling."""
 
 import pytest
+from jax import numpy as jnp
 from jax import random
 
 import jaxsne
 from jaxsne import metric
 from jaxsne.metric import Metric
+
+
+def test_duplicate_rows() -> None:
+    """Test that duplicate input rows don't produce NaN gradients."""
+    key = random.key(0)
+    data = random.normal(key, (49, 5))
+    data = jnp.concatenate([data, data[:1]], 0)
+    res = jaxsne.scaling(data)
+    assert res.shape == (50, 2)
 
 
 def test_random_scaling() -> None:

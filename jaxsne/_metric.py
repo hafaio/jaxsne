@@ -11,7 +11,10 @@ Metric: TypeAlias = Callable[[Array, Array], Array]
 @jax.jit
 def euclidean(left: Array, right: Array) -> Array:
     """Compute the euclidian distance."""
-    return jnp.linalg.norm(left - right, 2, -1)
+    # double where so sqrt's subgradient stays finite at zero distance
+    squared = jnp.sum((left - right) ** 2, -1)
+    positive = squared > 0.0
+    return jnp.where(positive, jnp.sqrt(jnp.where(positive, squared, 1.0)), 0.0)
 
 
 @jax.jit

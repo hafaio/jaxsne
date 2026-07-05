@@ -1,9 +1,22 @@
 """Test that metric functions work as epxected."""
 
+import jax
+from jax import Array, random
 from jax import numpy as jnp
-from jax import random
 
 from jaxsne import metric
+
+
+def test_euclidean_zero_gradient() -> None:
+    """Test the euclidean gradient is finite for coincident points."""
+    point = jnp.array([0.0, 0.0])
+
+    def dist_to_point(left: Array) -> Array:
+        return metric.euclidean(left, point)
+
+    grad = jax.grad(dist_to_point)(point)
+    assert jnp.all(jnp.isfinite(grad))
+    assert jnp.allclose(grad, point)
 
 
 def test_euclidean_known() -> None:
