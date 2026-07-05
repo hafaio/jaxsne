@@ -25,6 +25,14 @@ def test_small_sne() -> None:
     assert res.shape == (50, 2)
 
 
+def test_perplexity_too_large() -> None:
+    """Test that a perplexity larger than num - 1 raises a clear error."""
+    key = random.key(0)
+    data = random.normal(key, (10, 5))
+    with pytest.raises(ValueError, match="perplexity"):
+        jaxsne.sne(data)
+
+
 @pytest.mark.parametrize(
     "out_dim,in_metric,in_measure,out_metric,out_measure",
     [
