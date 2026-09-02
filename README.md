@@ -35,7 +35,7 @@ pip install jaxsne
 ```py
 import jaxsne
 
-data = ... # n x d
+data = ...  # n x d
 reduced = jaxsne.sne(data)
 # or
 reduced = jaxsne.scaling(data)
@@ -49,12 +49,13 @@ import jax
 from jax import Array
 from jax import numpy as jnp
 
+
 @jax.jit
 def manhattan(left: Array, right: Array) -> Array:
     return jnp.abs(left - right).sum(-1)
 
 
-data = ... # n x d
+data = ...  # n x d
 reduced = jaxsne.sne(data, in_metric=manhattan, out_metric=manhattan)
 ```
 
