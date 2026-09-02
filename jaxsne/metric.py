@@ -19,4 +19,4 @@ work with this library a metric must satisfy:
 
 from ._metric import Metric, cosine, euclidean, poincare
 
-__all__ = ("cosine", "euclidean", "poincare", "Metric")
+__all__ = ("Metric", "cosine", "euclidean", "poincare")

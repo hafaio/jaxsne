@@ -13,4 +13,4 @@ that is also handled by SNE.
 
 from ._measure import Measure, cauchy, gaussian, laplace
 
-__all__ = ("gaussian", "cauchy", "laplace", "Measure")
+__all__ = ("Measure", "cauchy", "gaussian", "laplace")

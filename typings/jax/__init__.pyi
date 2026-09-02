@@ -1,5 +1,3 @@
-from __future__ import annotations
-
 from collections.abc import Callable, Iterator, Sequence
 from types import EllipsisType
 from typing import ParamSpec, TypeVar

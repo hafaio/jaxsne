@@ -61,7 +61,7 @@ def _fit_probs(dists: Array, target: float, measure: Measure, tol: float) -> Arr
 
 
 @partial(jax.jit, static_argnames=["metric", "measure", "num", "dim"])
-def _fun(  # noqa: PLR0913
+def _fun(  # noqa: PLR0913, PLR0917
     x: Array,
     p: Array,
     scale: float,
